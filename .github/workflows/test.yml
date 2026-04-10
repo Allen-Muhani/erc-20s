@@ -2,7 +2,7 @@ name: test
 
 on: workflow_dispatch
 
-env: 
+env:
   FOUNDRY_PROFILE: ci
 
 jobs:
@@ -14,19 +14,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          submodules: recursive
 
       - name: Install Foundry
         uses: foundry-rs/foundry-toolchain@v1
         with:
           version: nightly
 
-      - name: Run Forge Build
+      - name: Run Forge build
         run: |
           forge --version
           forge build --sizes
         id: build
 
-      - name: Run Forge Test
+      - name: Run Forge tests
         run: |
-          forge test --vvv
+          forge test -vvv
         id: test
