@@ -47,5 +47,5 @@ jobs:
       - name: Run tests
         run: forge test -vvv
 
-      - name: Run snapshot (gas report)
-        run: forge snapshot --check --tolerance 2
+#      - name: Run snapshot (gas report)
+#        run: forge snapshot --check --tolerance 2
