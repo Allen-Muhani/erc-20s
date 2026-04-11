@@ -49,6 +49,14 @@ contract OurTokenTests is Test {
         assertEq(token.balanceOf(alice), 20 ether);
     }
 
+    function testTransfer() public {
+        vm.prank(bob);
+        token.transfer(alice, 100 ether);
+
+        assertEq(token.balanceOf(bob), 900 ether);
+        assertEq(token.balanceOf(alice), 100 ether);
+    }
+
     function testInitialSupply() view public {
         assertEq(token.totalSupply(), 1000 ether);
     }
